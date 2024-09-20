@@ -5,8 +5,6 @@ const User = require("../models/user");
 require("dotenv").config();
 const validator = require("validator");
 
-console.log(process.env.JWT_SECRET);
-
 exports.signup = (req, res, next) => {
   const email = req.body.email;
   const password = req.body.password;
@@ -60,7 +58,7 @@ exports.login = (req, res, next) => {
           } else {
             res.status(200).json({
               userId: user._id,
-              token: jwt.sign({ userId: user._id }, "RANDOM_TOKEN_SECRET", {
+              token: jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
                 expiresIn: "24h",
               }),
             });
