@@ -157,7 +157,6 @@ exports.rateBook = (req, res, next) => {
       book.ratings.push({ userId, grade });
       if (book.ratings.length > 0) {
         const allRatings = book.ratings.map((rating) => rating.grade);
-        console.log(allRatings);
         const moyenne =
           allRatings.reduce((sum, rate) => sum + rate, 0) / allRatings.length;
         book.averageRating = moyenne;

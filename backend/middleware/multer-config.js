@@ -12,10 +12,7 @@ const processImage = async (req, res, next) => {
 
   try {
     const bookObject = JSON.parse(req.body.book);
-
     const name = bookObject.title.split(" ").join("_");
-    console.log(name);
-
     const filename = name + Date.now() + ".webp";
 
     const buffer = await sharp(req.file.buffer)
